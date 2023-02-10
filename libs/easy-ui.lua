@@ -1,4 +1,6 @@
 
+local UserInputService = game:GetService("UserInputService")
+
 -- Protections (if available)
 local protect = (syn and syn.protect_gui)
 local protect2 = (get_hidden_gui or gethui)

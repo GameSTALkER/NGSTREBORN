@@ -18,7 +18,7 @@ UI.ScreenGui = function(parent, properties) -- has auto-protect gui
         local check = {
             parent.ChildAdded;
             parent.DescendantAdded;
-            parent.ChildRemoving;
+            parent.ChildRemoved;
             parent.DescendantRemoving;
             
         }

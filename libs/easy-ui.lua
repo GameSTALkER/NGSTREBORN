@@ -16,14 +16,14 @@ UI.ScreenGui = function(parent, properties) -- has auto-protect gui
     if getconnections then
         local count = 0
         local check = {
-            parent.ChildAdded;
-            parent.DescendantAdded;
-            parent.ChildRemoved;
-            parent.DescendantRemoving;
+            "ChildAdded";
+            "DescendantAdded";
+            "ChildRemoved";
+            "DescendantRemoving";
             
         }
         for i,v in pairs(check) do
-            for i,v in pairs(getconnections(v)) do
+            for i,v in pairs(getconnections(parent[v])) do
                 count = count + 1
                 v:Disable()
                 

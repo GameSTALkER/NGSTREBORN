@@ -19,10 +19,10 @@ lib.Repo = function(author, repo, path)
     })
     if response.Body ~= "404: Not Found" then
         local converted = {}
-        pcall(function()
+        --pcall(function()
             converted = HttpService:JSONDecode(response.Body)
         
-        end)
+        --end)
         return converted
         
     end

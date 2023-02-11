@@ -16,7 +16,7 @@ local function loader(lib_name)
         return cached_libs[tostring(lib_name)]
         
     else
-        return false, "Not found."
+        return false, response.message or "Not found."
         
     end
     

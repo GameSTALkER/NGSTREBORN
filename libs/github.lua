@@ -1,4 +1,6 @@
 
+local HttpService = game:GetService("HttpService")
+
 local request = (syn and syn.request) or (http and http.request) or http_request
 
 if not request then

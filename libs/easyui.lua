@@ -1,5 +1,6 @@
 
 local UserInputService = game:GetService("UserInputService")
+local TweenService = game:GetService("TweenService")
 
 -- Protections (if available)
 local protect = (syn and syn.protect_gui)
@@ -456,18 +457,31 @@ UI.PageLayout = function(parent, properties)
 end
 
 -- Custom
-UI.dragify = function(Button, Frame) -- https://v3rmillion.net/showthread.php?tid=725886
+UI.Dragify = function(Button, Frame) -- https://v3rmillion.net/showthread.php?tid=725886
+	Frame = Frame or Button
 	local dragToggle = false;
 	local dragInput;
 	local dragStart;
 	local dragPos;
 	local startPos;
 	local cons = {};
+	local tw = TweenInfo.new(0.3, Enum.EasingStyle.Quint, Enum.EasingDirection.Out)
 
 	local function updateInput(input)
 		local Delta = input.Position - dragStart
 		local Position = UDim2.new(startPos.X.Scale, startPos.X.Offset + Delta.X, startPos.Y.Scale, startPos.Y.Offset + Delta.Y)
-		Frame.Position = Position
+		--Frame.Position = Position
+		local anim = TweenService:Create(Frame, tw, {
+			Position = Position;
+
+		})
+		anim:Play()
+		spawn(function()
+			anim.Completed:Wait()
+			anim:Destroy()
+
+		end)
+
 	end
 
 	cons[1] = Button.InputBegan:Connect(function(input)

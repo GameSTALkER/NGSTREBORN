@@ -1,4 +1,6 @@
 
+local HttpService = game:GetService("HttpService")
+
 local lib = {}
 
 lib.split = function(text, sep)
